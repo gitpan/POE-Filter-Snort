@@ -1,0 +1,8 @@
+# $Id: MANIFEST 5 2005-06-22 04:30:04Z rcaputo $
+CHANGES
+MANIFEST
+Makefile.PL
+README
+Snort.pm
+t/01_basic.t
+META.yml                                 Module meta-data (added by MakeMaker)

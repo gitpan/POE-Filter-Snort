@@ -1,0 +1,41 @@
+=========================
+2005-06-22 04:35:42 v0_01
+=========================
+
+  2005-06-22 04:32:02 (r7) by rcaputo; CHANGES D
+
+    CHANGES is generated automatically during "make dist". Remove it
+    here. 
+
+  2005-06-22 04:31:41 (r6) by rcaputo; Makefile.PL M; CHANGES M
+
+    Point Makefile.PL to the proper URL for this project's repository. 
+
+  2005-06-22 04:30:04 (r5) by rcaputo
+  README M; Snort.pm M; MANIFEST M; Makefile.PL M
+
+    Add the svn:keywords property. 
+
+  2005-06-21 19:51:41 (r4) by rcaputo; Snort.pm M
+
+    The VERSION is human-controlled. Duh! 
+
+  2005-06-21 19:12:03 (r3) by rcaputo; MANIFEST M; Makefile.PL M
+
+    Remove META.yml from the MANIFEST since it's added automatically at
+    "make dist" time. Updated Makefile.PL for Snort. It was originally
+    copied from a different project. 
+
+  2005-06-20 16:18:13 (r2) by rcaputo; Makefile.PL M
+
+    Don't move POE::Filter::Snort into blib/lib/POE/Filter/DNS.pm! D'oh! 
+
+  2005-06-19 23:20:57 (r1) by rcaputo
+  README A; /trunk A; Snort.pm A; /branches A; t A; TODO A; MANIFEST A;
+  Makefile.PL A; CHANGES A; /tags A
+
+    Initial import. 
+
+==============
+End of Excerpt
+==============
