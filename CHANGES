@@ -1,4 +1,21 @@
 =========================
+2006-05-21 00:22:11 v0_02
+=========================
+
+  2006-05-21 00:21:58 (r11) by rcaputo; Snort.pm M
+
+    Apply Chris Williams' patch to include the raw log information in
+    items returned from get_one(). Bumped up the version for release. 
+
+  2006-02-09 16:00:53 (r10) by rcaputo; Snort.pm M
+
+    Add SID and revision parsing. 
+
+  2006-02-09 15:56:25 (r9) by rcaputo; t/01_basic.t A
+
+    OMG! How long has this not been checked in? 
+
+=========================
 2005-06-22 04:35:42 v0_01
 =========================
 

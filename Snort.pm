@@ -1,4 +1,4 @@
-# $Id: Snort.pm 5 2005-06-22 04:30:04Z rcaputo $
+# $Id: Snort.pm 11 2006-05-21 00:21:58Z rcaputo $
 
 =head1 NAME
 
@@ -56,7 +56,7 @@ POE::Filter::Snort - a POE stream filter that parses Snort logs into hashes
 
 POE::Filter::Snort parses streams containing Snort alerts.  Each alert
 is returned as a hash containing the following fields: comment, class,
-priority, src_ip, dst_ip, src_port, dst_port, xref.
+priority, src_ip, dst_ip, src_port, dst_port, xref, raw.
 
 Most fields are optional.  For example, some snort alerts don't
 contain a source and destination IP address.  Those that do aren't
@@ -66,6 +66,9 @@ The xref field refers to an array of URLs describing the alert in more
 detail.  It will always exist, but it may be empty if no URLs appear
 in snort's configuration file.
 
+The raw field is an arrayref containing each original line of the
+snort alert.
+
 =cut
 
 package POE::Filter::Snort;
@@ -74,7 +77,7 @@ use warnings;
 use strict;
 
 use vars qw($VERSION @ISA);
-$VERSION = '0.01';
+$VERSION = '0.02';
 @ISA = qw(POE::Filter);
 
 use Carp qw(carp croak);
@@ -117,14 +120,20 @@ sub get_one {
 		$line = $line->[0];
 
 		if ($self->[PARSER_STATE] & STATE_OUTSIDE) {
-			next unless $line =~ /^\[\*\*\]\s*\[\d+:\d+:\d+\]\s*(.*?)\s*\[\*\*\]/;
+			next unless $line =~
+                        /^\[\*\*\]\s*\[(\d+):(\d+):(\d+)\]\s*(.*?)\s*\[\*\*\]/;
 			$self->[PARSED_RECORD] = {
-				comment => $1,
+				sid			=> $2,
+				rev			=> $3,
+				comment => $4,
 				xref    => [ ],
+				raw     => [ $line ],
 			};
 			$self->[PARSER_STATE]  = STATE_INSIDE;
 			next;
 		}
+
+		push @{ $self->[PARSED_RECORD]{raw} }, $line;
 
 		if ($line =~ /^\s*$/) {
 			$self->[PARSER_STATE] = STATE_OUTSIDE;
