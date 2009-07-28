@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id: Makefile.PL 6 2005-06-22 04:31:41Z rcaputo $
+# $Id: Makefile.PL 15 2009-07-28 06:42:22Z rcaputo $
 
 use ExtUtils::MakeMaker;
 
@@ -10,12 +10,18 @@ WriteMakefile(
 	NAME         => 'POE::Filter::Snort',
 	AUTHOR       => 'Rocco Caputo <rcaputo@cpan.org>',
 	ABSTRACT     => 'POE stream filter for parsing Snort logs',
+	LICENSE      => 'perl',
 	VERSION_FROM => 'Snort.pm',
-
+	META_ADD     => {
+		resources  => {
+			license    => 'http://dev.perl.org/licenses/',
+			repository => 'http://thirdlobe.com/svn/pofi-snorit/trunk'
+		},
+	},
 	PM           => { 'Snort.pm' => '$(INST_LIBDIR)/Snort.pm' },
 	PREREQ_PM    => {
-		POE        => 0.3101,
-		Test::More => 0,
+		'POE'        => 1.007,
+		'Test::More' => 0,
 	},
 	dist         => {
 		COMPRESS   => 'gzip -9f',
