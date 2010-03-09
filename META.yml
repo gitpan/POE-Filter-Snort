@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               POE-Filter-Snort
-version:            0.030
+version:            0.031
 abstract:           POE stream filter for parsing Snort logs
 author:
     - Rocco Caputo <rcaputo@cpan.org>
@@ -15,7 +15,7 @@ requires:
     Test::More:  0
 resources:
     license:     http://dev.perl.org/licenses/
-    repository:  http://thirdlobe.com/svn/pofi-snorit/trunk
+    repository:  http://github.com/rcaputo/poe-filter-snort
 no_index:
     directory:
         - t
